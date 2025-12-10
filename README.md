@@ -1,6 +1,5 @@
 # Algorithm Name
 Binary Search
-## Demo video/gif/screenshot of test
 
 ## Problem Breakdown & Computational Thinking (You can add a flowchart and write the
 four pillars of computational thinking briefly in bullets)
@@ -41,10 +40,34 @@ only show:
 input: list of numbers and target
 output: visual and explanation
 
-
-
 ## Steps to Run
+(locally)
+1. download github repository
+
+2. install required dependencies
+
+3. run the app
+
+4. open the gradio link shown in terminal
+
+(hugging face)
+1. go to hugging face link
+
+2. enter list of numbers and target
+
+3. click start/reset
+
+4. click next to step through the search
 
 ## Hugging Face Link
 
+https://huggingface.co/spaces/ekinekinekin/python 
+
 ## Author & Acknowledgment
+
+Name: Ekin Erturk
+Student Number: 20519772
+University: Queens University
+
+This project was completed using knowledge from CISC-121 course material, lectures, and assignment resources.
+Gradio documentation supported the web interface implementation.
