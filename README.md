@@ -1,6 +1,12 @@
 # Algorithm Name
 Binary Search
 
+## Demo video/gif/screenshot of test
+
+
+https://github.com/user-attachments/assets/835e2b51-0a3e-43f4-9eb0-1085935bd39e
+
+
 ## Problem Breakdown & Computational Thinking (You can add a flowchart and write the
 four pillars of computational thinking briefly in bullets)
 
@@ -40,6 +46,8 @@ only show:
 input: list of numbers and target
 output: visual and explanation
 
+[Drawing 6.pdf](https://github.com/user-attachments/files/24068383/Drawing.6.pdf)
+
 ## Steps to Run
 (locally)
 1. download github repository
@@ -71,3 +79,13 @@ University: Queens University
 
 This project was completed using knowledge from CISC-121 course material, lectures, and assignment resources.
 Gradio documentation supported the web interface implementation.
+
+AI Assistance Disclosure:
+
+Portions of this project were developed with support from AI tools, such as ChatGPT, specifically for:
+- Debugging and fixing errors
+- Improving documentation and formatting
+- Clarifying algorithm concepts
+
+All logic, structure, user interface, theme, and design decisions were created by me. I reviewed and validated all AI-generated suggestions and ensured I understand every line of the code.
+
