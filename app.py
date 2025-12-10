@@ -9,7 +9,6 @@ def highlightArray(arr, left, mid, right, target):
     html = ""
     for i, num in enumerate(arr):
         color = "#c7e2eb"  # light blue
-
         if i == mid:
             color = "#facde0"  # pink
         if num == target:
@@ -25,8 +24,11 @@ def highlightArray(arr, left, mid, right, target):
     return f"<div style='display:flex; justify-content:center;'>{html}</div>"
 
 def binarySearchSteps(arrayStr, target):
+    if not arrayStr.strip() or not target.strip():
+        return "enter valid integers!", []
+
     try:
-        arr = [int(x) for x in arrayStr.split(",")]
+        arr = [int(x) for x in arrayStr.split(",") if x.strip() != ""]
         target = int(target)
     except:
         return "enter valid integers!", []
@@ -38,7 +40,6 @@ def binarySearchSteps(arrayStr, target):
 
     while left <= right:
         mid = (left + right) // 2
-
         visuals.append(highlightArray(arr, left, mid, right, target))
         stepsText.append(f"cat checks index {mid} → {arr[mid]}")
 
@@ -48,13 +49,13 @@ def binarySearchSteps(arrayStr, target):
             return "\n".join(stepsText), visuals
 
         if arr[mid] < target:
-            stepsText.append("mouse is on the RIGHT ➡️\n")
+            stepsText.append("mouse is on the RIGHT \n")
             left = mid + 1
         else:
-            stepsText.append("mouse is on the LEFT ⬅️\n")
+            stepsText.append("mouse is on the LEFT \n")
             right = mid - 1
 
-    stepsText.append(f"no mouse ｡ﾟ(｡ﾉωヽ｡)ﾟ｡ target **{target}** not found")
+    stepsText.append(f"no mouse! target **{target}** not found")
     return "\n".join(stepsText), visuals
 
 def stepsThrough(arrStr, target, step):
@@ -65,8 +66,10 @@ def stepsThrough(arrStr, target, step):
         return text, visuals[-1], step
     return text, "", step
 
-with gr.Blocks() as demo:
+def resetSearch():
+    return "", "", 0
 
+with gr.Blocks() as demo:
     gr.HTML("<h2 style='text-align:center;'>mouse chase! ≽(•⩊ •マ≼ → binary search</h2>")
 
     with gr.Row():
@@ -81,19 +84,26 @@ with gr.Blocks() as demo:
     visOutput = gr.HTML()
 
     with gr.Row():
-        startBtn = gr.Button("start / reset ᓚᘏᗢ")
-        nextBtn = gr.Button("next ⋆˚꩜｡")
+        startBtn = gr.Button("start ᓚᘏᗢ")
+        resetBtn = gr.Button("reset ˚⋆｡˖")
 
-        startBtn.click(
-            lambda arr, t: (binarySearchSteps(arr, t)[0], "", 0),
-            [arrayIn, targetIn],
-            [outputText, visOutput, stepState]
-        )
+    startBtn.click(
+        lambda arr, t: (binarySearchSteps(arr, t)[0], "", 0),
+        [arrayIn, targetIn],
+        [outputText, visOutput, stepState]
+    )
 
-        nextBtn.click(
-            stepsThrough,
-            [arrayIn, targetIn, stepState],
-            [outputText, visOutput, stepState]
-        )
+    resetBtn.click(
+        resetSearch,
+        None,
+        [outputText, visOutput, stepState]
+    )
+
+    nextBtn = gr.Button("next ⋆˚꩜｡")
+    nextBtn.click(
+        stepsThrough,
+        [arrayIn, targetIn, stepState],
+        [outputText, visOutput, stepState]
+    )
 
 demo.launch()
